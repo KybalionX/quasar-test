@@ -1,0 +1,30 @@
+name: Running testing
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+  FTP-Deploy-Action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: actions/checkout@v2.1.0
+        with:
+          fetch-depth: 2
+      - name: Install dependencies
+        run: npm install
+      - name: Linting code
+        run: npm run lint
+      - name: Run build
+        run: npm run build
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: pruebas.sicte.com
+          username: administrator
+          password: Nuevo&48wf%
