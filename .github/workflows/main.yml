@@ -23,6 +23,7 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
+          local-dir: ./dist/spa
           server: pruebas.sicte.com
           username: sicte-com
           password: 1m~hVv7Qw$Psfvx8
